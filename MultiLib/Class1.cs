@@ -10,16 +10,28 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Net.NetworkInformation;
 using System.Net;
+using System.Net.Mail;
+using System.Windows.Forms;
 
 namespace MultiLib
 {
     /// <summary>
-    /// Стандартные команды
+    /// Класс стандартных команд
     /// </summary>
     public class basicC
     {
+        /// <summary>
+        /// Рандомное число
+        /// </summary>
+        /// <param name="start">Начальное число</param>
+        /// <param name="finish">Конечное число</param>
+        /// <returns>Случайное число</returns>
+        public static int random(int start, int finish)
+        {
+            Random rnd = new Random();
+            return rnd.Next(start, finish);
 
-
+        }
 
         /// <summary>
         /// Ввод пользовательской строки
@@ -117,7 +129,7 @@ namespace MultiLib
         }
     }
     /// <summary>
-    /// Работа с архивами
+    /// Класс работа с архивами
     /// </summary>
     class czipC
     {
@@ -196,12 +208,12 @@ namespace MultiLib
         }
     }
     /// <summary>
-    /// Проверка наличия инетрнета (класс)
+    /// Класс проверка наличия инетрнета
     /// </summary>
-    class ping
+    static class ping
     {
         /// <summary>
-        /// Проверка наличия интернета (функция)
+        /// Проверка наличия интернета
         /// </summary>
         /// <returns>true - если интернет есть, false - если интернета нету</returns>
         public static bool InternetConection()
@@ -218,10 +230,11 @@ namespace MultiLib
             {
                 return false;
             }
+            
         }
     }
     /// <summary>
-    /// Работа с FTP
+    /// Класс работа с FTP
     /// </summary>
     class FTP
     {
@@ -325,6 +338,78 @@ namespace MultiLib
                 }
             }
             return true;
+        }
+    }
+    /// <summary>
+    /// Класс работы с почтой
+    /// </summary>
+    class mail
+    {
+        /// <summary>
+        /// Отправка письма на почту
+        /// </summary>
+        /// <param name="fromEmail">Почта отправителя (укажите почту которую будете использовать и в параметре SMTP почта)</param>
+        /// <param name="fromName">Имя отправителя</param>
+        /// <param name="toEmail">Почта получателя</param>
+        /// <param name="subject">Тема письма</param>
+        /// <param name="textOrHtml">Текст или html код для письма</param>
+        /// <param name="smtpServer">SMTP сервер (например: mail.gmail.com)</param>
+        /// <param name="smtpPort">SMTP порт сервера (например: 587)</param>
+        /// <param name="smtpMail">SMTP почта (используйте почту указанную в почте отправителя ОЧЕНЬ ВАЖНО: ИСПОЛЬЗУЙТЕ ПОЧТУ ЗАРЕГЕСТРИРОВАННУЮ НА SMTP СЕРВЕРЕ! НАПРИМЕР ДЛЯ ПОЧТЫ ЗАКАНЧИВАЮЩИХСЯ НА @gmail.com НУЖЕН ОБЯЗАТЕЛЬНО СЕРВЕР mail.gmail.com, А ПОРТ НУЖЕН 587. ЕСЛИ ПОЧТА ОКАНЧИВАЕТСЯ НА ЧТОТО ДРУГОЕ НАПРИМЕР @mail.ru, ТО ПОИЩИТЕ В ИНТЕРНЕТЕ ЕГО SMTP СЕРВЕР И КАК ЕГО ИСПОЛЬЗОВАТЬ!)</param>
+        /// <param name="smtpPasswordMail">SMTP пароль (для mail.gmail.com нужно выполнить некоторые действия для создания пароля (не вашего стандартного пароля) от вашей почты (документация по получению: https://multiplayercorporation.mya5.ru/doc/smtp))</param>
+        /// <param name="saveLogFails">Сохранять логи ошибок?</param>
+        /// <returns>true - Сообщение отправлено, false - Сообщение не отправлено</returns>
+        public static bool send(string fromEmail, string fromName, string toEmail, string subject, string textOrHtml, string smtpServer, int smtpPort, string smtpMail, string smtpPasswordMail, bool saveLogFails)
+        {
+            if (ping.InternetConection())
+            {
+                MailAddress from = new MailAddress(fromEmail, fromName);
+                MailAddress to = new MailAddress(toEmail);
+                MailMessage m = new MailMessage(from, to);
+                m.Subject = subject;
+                m.Body = textOrHtml;
+                m.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient(smtpServer, smtpPort);
+                smtp.Credentials = new NetworkCredential(smtpMail, smtpPasswordMail);
+                smtp.EnableSsl = true;
+                try
+                {
+                    smtp.Send(m);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    if (saveLogFails)
+                    {
+                        try
+                        {
+                            File.WriteAllText($"log{basicC.random(111, 999)}.log", $"{ex.Message}");
+                        }
+                        catch (Exception ex2)
+                        {
+                            Console.WriteLine(MessageBox.Show($@"1. {ex.Message}
+2. {ex2.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Stop));
+                        }
+                    }
+                    return false;
+                }
+            }
+            else
+            {
+                if (saveLogFails)
+                {
+                    try
+                    {
+                        File.WriteAllText($"log{basicC.random(111, 999)}.log", $"Нет подключения к интернету!");
+                    }
+                    catch (Exception ex2)
+                    {
+                        Console.WriteLine(MessageBox.Show($@"1. Нет подключения к интернету!
+2. {ex2.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Stop));
+                    }
+                }
+                return false;
+            }
         }
     }
 }
