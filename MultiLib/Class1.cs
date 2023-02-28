@@ -124,7 +124,7 @@ namespace MultiLib
             Console.WriteLine("Company: " + company);
             Console.WriteLine("Copyright: " + copyright);
             Console.WriteLine("Trademark: " + trademark);
-            Console.WriteLine("Created by MultiLib V1.0 ((C) MultiPlayer 2019-2023)");
+            Console.WriteLine("Created by MultiLib V1.1 ((C) MultiPlayer 2019-2023)");
 
         }
     }
