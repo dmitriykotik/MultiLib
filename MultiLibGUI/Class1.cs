@@ -13,7 +13,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
 
-namespace MultiLib
+namespace MultiLibGUI
 {
     /// <summary>
     /// Класс стандартных команд
@@ -34,47 +34,11 @@ namespace MultiLib
         }
 
         /// <summary>
-        /// Ввод пользовательской строки
-        /// </summary>
-        /// <returns>Введённый текст в строке</returns>
-        public static string read()
-        {
-            string line = Console.ReadLine();
-            return line;
-        }
-        /// <summary>
-        /// Ввод пользовательской строки и проверка ожидаемого текста
-        /// </summary>
-        /// <param name="expectedText">Текст для проверки</param>
-        /// <returns>true - текст равен ожид. значению; false - текст не равен ожид. значению</returns>
-        public static bool read(string expectedText) 
-        {
-            string line = Console.ReadLine();
-            if (expectedText == line)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-            //test
-        }
-
-        /// <summary>
-        /// Приостановка работы
-        /// </summary>
-        public static void pause()
-        {
-            Console.ReadKey();
-        }
-
-        /// <summary>
         /// Ожидание на определённое время
         /// </summary>
         /// <param name="sleepTime">Время (Милисекунды)</param>
-        public static void sleep(int sleepTime) 
-        { 
+        public static void sleep(int sleepTime)
+        {
             Thread.Sleep(sleepTime);
         }
 
@@ -88,25 +52,7 @@ namespace MultiLib
         }
 
         /// <summary>
-        /// Вывод строчки
-        /// </summary>
-        /// <param name="text">Текст в строчке</param>
-        public static void writel(string text)
-        {
-            Console.WriteLine(text);
-        }
-
-        /// <summary>
-        /// Вывод текста
-        /// </summary>
-        /// <param name="text">Текст</param>
-        public static void write(string text) 
-        {
-            Console.Write(text);
-        }
-
-        /// <summary>
-        /// Выводит в терминал указанные данные о программе
+        /// Создание формы и вывод в неё указанные данные о программе
         /// </summary>
         /// <param name="namePacket">Название программы</param>
         /// <param name="description">Описание</param>
@@ -115,17 +61,10 @@ namespace MultiLib
         /// <param name="copyright">Копирайт</param>
         /// <param name="company">Компания</param>
         /// <param name="trademark">Торговая марка</param>
-        public static void versionProgram(string namePacket, string description, string Version, string Revese, string copyright, string company, string trademark)
+        public static void versionProgram(string namePacket, string description, string Version, string Revese, string company)
         {
-            Console.WriteLine("Programm: " + namePacket);
-            Console.WriteLine("Description: " + description);
-            Console.WriteLine("Version: " + Version);
-            Console.WriteLine("Revese: " + Revese);
-            Console.WriteLine("Company: " + company);
-            Console.WriteLine("Copyright: " + copyright);
-            Console.WriteLine("Trademark: " + trademark);
-            Console.WriteLine("Created by MultiLib V1.0 ((C) MultiPlayer 2019-2023)");
-
+            AboutBox1 ab = new AboutBox1();
+            ab.Start(namePacket, description, Version, Revese, company);
         }
     }
     /// <summary>
@@ -230,7 +169,7 @@ namespace MultiLib
             {
                 return false;
             }
-            
+
         }
     }
     /// <summary>
@@ -334,7 +273,7 @@ namespace MultiLib
                 if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
                 {
                     return false;
-                    
+
                 }
             }
             return true;

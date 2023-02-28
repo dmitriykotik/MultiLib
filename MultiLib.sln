@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLib", "MultiLib\MultiLib.csproj", "{CE42AA1C-6BFF-45BC-979E-59F5F14EF8EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLibGUI", "MultiLibGUI\MultiLibGUI.csproj", "{8877D520-8AB4-493C-82BB-5919590421EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CE42AA1C-6BFF-45BC-979E-59F5F14EF8EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE42AA1C-6BFF-45BC-979E-59F5F14EF8EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE42AA1C-6BFF-45BC-979E-59F5F14EF8EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8877D520-8AB4-493C-82BB-5919590421EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8877D520-8AB4-493C-82BB-5919590421EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8877D520-8AB4-493C-82BB-5919590421EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8877D520-8AB4-493C-82BB-5919590421EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
