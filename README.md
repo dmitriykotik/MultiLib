@@ -13,6 +13,7 @@
 3. ping
 4. FTP
 5. mail
+6. music
 
 - MultiLibGUI
 1. basic
@@ -20,6 +21,7 @@
 3. ping
 4. FTP
 5. mail
+6. music
 
 # Функции
 - MultiLib
@@ -49,6 +51,11 @@ IV. FTP
 V. mail
 1. send(string fromEmail, string fromName, string toEmail, string subject, string textOrHtml, string smtpServer, int smtpPort, string smtpMail, string smtpPasswordMail, bool saveLogFails)
 
+VI. music
+1. play(pathMusicFile)
+2. stop()
+3. pause()
+
 - MultiLibGUI
 
 I. basic
@@ -71,6 +78,11 @@ IV. FTP
 
 V. mail
 1. send(string fromEmail, string fromName, string toEmail, string subject, string textOrHtml, string smtpServer, int smtpPort, string smtpMail, string smtpPasswordMail, bool saveLogFails)
+
+VI. music
+1. play(pathMusicFile)
+2. stop()
+3. pause()
 
 # Документация
 Пока что тут нет документации, но обещаем, она тут будет. Будет она очень подробной с примерами. Спасибо за ожидание!
