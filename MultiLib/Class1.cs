@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region Импорт библиотек (15 библиотек...)
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -12,13 +13,17 @@ using System.Net.NetworkInformation;
 using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
+using WMPLib;
+#endregion
 
 namespace MultiLib
 {
+    ///Все функции
+    #region Стандартные команды
     /// <summary>
     /// Класс стандартных команд
     /// </summary>
-    public class basic
+    public static class basic
     {
         /// <summary>
         /// Рандомное число
@@ -47,7 +52,7 @@ namespace MultiLib
         /// </summary>
         /// <param name="expectedText">Текст для проверки</param>
         /// <returns>true - текст равен ожид. значению; false - текст не равен ожид. значению</returns>
-        public static bool read(string expectedText) 
+        public static bool read(string expectedText)
         {
             string line = Console.ReadLine();
             if (expectedText == line)
@@ -73,8 +78,8 @@ namespace MultiLib
         /// Ожидание на определённое время
         /// </summary>
         /// <param name="sleepTime">Время (Милисекунды)</param>
-        public static void sleep(int sleepTime) 
-        { 
+        public static void sleep(int sleepTime)
+        {
             Thread.Sleep(sleepTime);
         }
 
@@ -100,7 +105,7 @@ namespace MultiLib
         /// Вывод текста
         /// </summary>
         /// <param name="text">Текст</param>
-        public static void write(string text) 
+        public static void write(string text)
         {
             Console.Write(text);
         }
@@ -128,10 +133,13 @@ namespace MultiLib
 
         }
     }
+    #endregion
+
+    #region Работа с архивами
     /// <summary>
     /// Класс работа с архивами
     /// </summary>
-    class czipC
+    public static class czipC
     {
         /// <summary>
         /// Зашифровка файла/архива
@@ -207,10 +215,13 @@ namespace MultiLib
             }
         }
     }
+    #endregion
+
+    #region Проверка наличия интернета
     /// <summary>
     /// Класс проверка наличия инетрнета
     /// </summary>
-    static class ping
+    public static class ping
     {
         /// <summary>
         /// Проверка наличия интернета
@@ -230,13 +241,16 @@ namespace MultiLib
             {
                 return false;
             }
-            
+
         }
     }
+    #endregion
+
+    #region Работа с FTP
     /// <summary>
     /// Класс работа с FTP
     /// </summary>
-    class FTP
+    public static class FTP
     {
         /// <summary>
         /// Загрузка файла на ФТП сервер
@@ -334,16 +348,19 @@ namespace MultiLib
                 if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
                 {
                     return false;
-                    
+
                 }
             }
             return true;
         }
     }
+    #endregion
+
+    #region Работа с почтой
     /// <summary>
     /// Класс работы с почтой
     /// </summary>
-    class mail
+    public static class mail
     {
         /// <summary>
         /// Отправка письма на почту
@@ -412,4 +429,42 @@ namespace MultiLib
             }
         }
     }
+    #endregion
+
+    #region Работа с музыкальными файлами
+    /// <summary>
+    /// Класс работы с музыкальными файлами
+    /// </summary>
+    public static class music
+    {
+        public static WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
+        /// <summary>
+        /// Запуск песни
+        /// </summary>
+        /// <param name="pathMusicFile">Полный путь до музыкального файла (Например: C:\Users\VM\MicroAPP\dolnayboishik.mp3)</param>
+        public static void play(string pathMusicFile)
+        {
+            wplayer.URL = pathMusicFile;
+            wplayer.controls.play();
+        }
+
+        /// <summary>
+        /// Остановка песни
+        /// </summary>
+        public static void stop() 
+        {
+            wplayer.controls.stop();
+        }
+
+        /// <summary>
+        /// Приостановка песни
+        /// </summary>
+        public static void pause()
+        {
+            wplayer.controls.pause();
+        }
+    }
+    #endregion
+
 }
+

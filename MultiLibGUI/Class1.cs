@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region Импорт библиотек (15 библиотек...)
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -12,13 +13,18 @@ using System.Net.NetworkInformation;
 using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
+using WMPLib;
+using MultiLibGUI;
+#endregion
 
-namespace MultiLibGUI
+namespace MultiLib
 {
+    ///Все функции
+    #region Стандартные команды
     /// <summary>
     /// Класс стандартных команд
     /// </summary>
-    public class basic
+    public static class basic
     {
         /// <summary>
         /// Рандомное число
@@ -52,25 +58,27 @@ namespace MultiLibGUI
         }
 
         /// <summary>
-        /// Создание формы и вывод в неё указанные данные о программе
+        /// Выводит в терминал указанные данные о программе
         /// </summary>
         /// <param name="namePacket">Название программы</param>
         /// <param name="description">Описание</param>
         /// <param name="Version">Версия</param>
         /// <param name="Revese">Ревизия (DEBUG/Alpha/Release/Beta)</param>
-        /// <param name="copyright">Копирайт</param>
         /// <param name="company">Компания</param>
-        /// <param name="trademark">Торговая марка</param>
         public static void versionProgram(string namePacket, string description, string Version, string Revese, string company)
         {
             AboutBox1 ab = new AboutBox1();
-            ab.Start(namePacket, description, Version, Revese, company);
+            ab.Show();
+
         }
     }
+    #endregion
+
+    #region Работа с архивами
     /// <summary>
     /// Класс работа с архивами
     /// </summary>
-    class czipC
+    public static class czipC
     {
         /// <summary>
         /// Зашифровка файла/архива
@@ -146,10 +154,13 @@ namespace MultiLibGUI
             }
         }
     }
+    #endregion
+
+    #region Проверка наличия интернета
     /// <summary>
     /// Класс проверка наличия инетрнета
     /// </summary>
-    static class ping
+    public static class ping
     {
         /// <summary>
         /// Проверка наличия интернета
@@ -172,10 +183,13 @@ namespace MultiLibGUI
 
         }
     }
+    #endregion
+
+    #region Работа с FTP
     /// <summary>
     /// Класс работа с FTP
     /// </summary>
-    class FTP
+    public static class FTP
     {
         /// <summary>
         /// Загрузка файла на ФТП сервер
@@ -279,10 +293,13 @@ namespace MultiLibGUI
             return true;
         }
     }
+    #endregion
+
+    #region Работа с почтой
     /// <summary>
     /// Класс работы с почтой
     /// </summary>
-    class mail
+    public static class mail
     {
         /// <summary>
         /// Отправка письма на почту
@@ -351,4 +368,42 @@ namespace MultiLibGUI
             }
         }
     }
+    #endregion
+
+    #region Работа с музыкальными файлами
+    /// <summary>
+    /// Класс работы с музыкальными файлами
+    /// </summary>
+    public static class music
+    {
+        public static WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
+        /// <summary>
+        /// Запуск песни
+        /// </summary>
+        /// <param name="pathMusicFile">Полный путь до музыкального файла (Например: C:\Users\VM\MicroAPP\dolnayboishik.mp3)</param>
+        public static void play(string pathMusicFile)
+        {
+            wplayer.URL = pathMusicFile;
+            wplayer.controls.play();
+        }
+
+        /// <summary>
+        /// Остановка песни
+        /// </summary>
+        public static void stop()
+        {
+            wplayer.controls.stop();
+        }
+
+        /// <summary>
+        /// Приостановка песни
+        /// </summary>
+        public static void pause()
+        {
+            wplayer.controls.pause();
+        }
+    }
+    #endregion
+
 }
+
