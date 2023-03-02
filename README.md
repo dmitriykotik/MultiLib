@@ -33,7 +33,7 @@ I. basic
 2. read(*string expectedText) 
 3. pause()
 4. sleep(int sleepTime)
-5. terminate(errCode)
+5. terminate(int errCode)
 6. writel(string text)
 7. write(string text)
 8. versionProgram(string namePacket, string description, string Version, string Revese, string copyright, string company, string trademark)
@@ -54,7 +54,7 @@ V. mail
 1. send(string fromEmail, string fromName, string toEmail, string subject, string textOrHtml, string smtpServer, int smtpPort, string smtpMail, string smtpPasswordMail, bool saveLogFails)
 
 VI. music
-1. play(pathMusicFile)
+1. play(string pathMusicFile)
 2. stop()
 3. pause()
 
@@ -63,7 +63,7 @@ VI. music
 I. basic
 1. random(int start, int finish)
 2. sleep(int sleepTime)
-3. terminate(errCode)
+3. terminate(int errCode)
 4. versionProgram(string namePacket, string description, string Version, string Revese, string copyright, string company, string trademark)
 
 II. czipC
@@ -82,7 +82,7 @@ V. mail
 1. send(string fromEmail, string fromName, string toEmail, string subject, string textOrHtml, string smtpServer, int smtpPort, string smtpMail, string smtpPasswordMail, bool saveLogFails)
 
 VI. music
-1. play(pathMusicFile)
+1. play(string pathMusicFile)
 2. stop()
 3. pause()
 
