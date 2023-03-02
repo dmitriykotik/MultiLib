@@ -43,6 +43,8 @@ I. basic
 II. czipC
 1. EncryptFile(string inputFile, string outputFile, string password)
 2. DecryptFile(string inputFile, string outputFile, string password)
+4. compress(string pathFoler, string outputArchive)
+5. decompress(string pathArchive, string outputFolder)
 
 III. ping
 1. InternetConection()
@@ -74,6 +76,8 @@ I. basic
 II. czipC
 1. EncryptFile(string inputFile, string outputFile, string password)
 2. DecryptFile(string inputFile, string outputFile, string password)
+4. compress(string pathFoler, string outputArchive)
+5. decompress(string pathArchive, string outputFolder)
 
 III. ping
 1. InternetConection()
