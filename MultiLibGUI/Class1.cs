@@ -1,4 +1,4 @@
-﻿#region Импорт библиотек (15 библиотек...)
+﻿#region Импорт библиотек (16 библиотек...)
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +14,12 @@ using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
 using WMPLib;
-using MultiLibGUI;
+using Microsoft.CSharp;
+using System.CodeDom.Compiler;
+using System.IO.Compression;
 #endregion
 
-namespace MultiLib
+namespace MultiLibGUI
 {
     ///Все функции
     #region Стандартные команды
@@ -151,6 +153,50 @@ namespace MultiLib
                 cs.Close();
                 fsCrypt.Close();
 
+            }
+        }
+        public static void compress(string pathFoler, string outputArchive)
+        {
+            if (Directory.Exists(pathFoler))
+            {
+                try
+                {
+                    ZipFile.CreateFromDirectory(pathFoler, outputArchive);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Не удаётся создать архив! Другая причина! Причина: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Не удаётся создать архив! Папка не существует!");
+            }
+
+        }
+        public static void decompress(string pathArchive, string outputFolder)
+        {
+            if (File.Exists(pathArchive))
+            {
+                if (Directory.Exists(outputFolder))
+                {
+                    try
+                    {
+                        System.IO.Compression.ZipFile.ExtractToDirectory(pathArchive, outputFolder);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Не удаётся извлечь файлы из архива! Другая причина! Причина: {ex.Message}");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Не удаётся извлечь файлы из архива! Папка для извлечения в него не существует!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Не удаётся извлечь файлы из архива! Архив не существует!");
             }
         }
     }
@@ -401,6 +447,48 @@ namespace MultiLib
         public static void pause()
         {
             wplayer.controls.pause();
+        }
+    }
+    #endregion
+
+    #region Работа с компилятором кода C#
+    public static class compilator
+    {
+        public static void collect(string inputSourceFile, string outputCompileFile)
+        {
+            // Путь к файлу с исходным кодом C#
+            string sourceFile = inputSourceFile;
+
+            if (File.Exists(sourceFile))
+            {
+                // Создаем компилятор
+                CSharpCodeProvider codeProvider = new CSharpCodeProvider();
+
+                // Задаем параметры компиляции
+                CompilerParameters parameters = new CompilerParameters();
+                parameters.GenerateExecutable = true;
+                parameters.OutputAssembly = outputCompileFile;
+
+                // Компилируем исходный код
+                CompilerResults results = codeProvider.CompileAssemblyFromFile(parameters, sourceFile);
+
+                // Проверяем, была ли компиляция успешной
+                if (results.Errors.Count > 0)
+                {
+                    foreach (CompilerError error in results.Errors)
+                    {
+                        MessageBox.Show("Ошибка компиляции файла! Проблема:" + error.ErrorText);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Компиляция успешно завершена!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Файл не обнаружен!");
+            }
         }
     }
     #endregion
