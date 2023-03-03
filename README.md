@@ -65,6 +65,7 @@ VI. music
 VII. compilator
 1. collect(string inputSourceFile, string outputCompileFile)
 
+
 - MultiLibGUI
 
 I. basic
