@@ -16,6 +16,7 @@
 4. FTP
 5. mail
 6. music
+7. compilator
 
 - MultiLibGUI
 1. basic
@@ -24,6 +25,7 @@
 4. FTP
 5. mail
 6. music
+7. compilator
 
 # Функции
 - MultiLib
@@ -41,6 +43,8 @@ I. basic
 II. czipC
 1. EncryptFile(string inputFile, string outputFile, string password)
 2. DecryptFile(string inputFile, string outputFile, string password)
+4. compress(string pathFoler, string outputArchive)
+5. decompress(string pathArchive, string outputFolder)
 
 III. ping
 1. InternetConection()
@@ -57,6 +61,10 @@ VI. music
 1. play(string pathMusicFile)
 2. stop()
 3. pause()
+
+VII. compilator
+1. collect(string inputSourceFile, string outputCompileFile)
+
 
 - MultiLibGUI
 
@@ -69,6 +77,8 @@ I. basic
 II. czipC
 1. EncryptFile(string inputFile, string outputFile, string password)
 2. DecryptFile(string inputFile, string outputFile, string password)
+4. compress(string pathFoler, string outputArchive)
+5. decompress(string pathArchive, string outputFolder)
 
 III. ping
 1. InternetConection()
@@ -85,6 +95,9 @@ VI. music
 1. play(string pathMusicFile)
 2. stop()
 3. pause()
+
+VII. compilator
+1. collect(string inputSourceFile, string outputCompileFile)
 
 # Документация
 Пока что тут нет документации, но обещаем, она тут будет. Будет она очень подробной с примерами. Спасибо за ожидание!
