@@ -1,4 +1,4 @@
-﻿#region Импорт библиотек (16 библиотек...)
+﻿#region Импорт библиотек (17 библиотек...)
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +17,7 @@ using WMPLib;
 using Microsoft.CSharp;
 using System.CodeDom.Compiler;
 using System.IO.Compression;
+using LibGit2Sharp;
 #endregion
 
 namespace MultiLibGUI
@@ -202,23 +203,40 @@ namespace MultiLibGUI
     }
     #endregion
 
-    #region Проверка наличия интернета
+    #region Работа с проверками в интернете
     /// <summary>
-    /// Класс проверка наличия инетрнета
+    /// Класс работа с проверками в интернете
     /// </summary>
-    public static class ping
+    public static class internet
     {
         /// <summary>
         /// Проверка наличия интернета
         /// </summary>
         /// <returns>true - если интернет есть, false - если интернета нету</returns>
-        public static bool InternetConection()
+        public static bool TestConnection()
         {
             try
             {
                 using (var ping = new Ping())
                 {
                     var result = ping.Send("google.com", 1000);
+                    return result.Status == IPStatus.Success;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
+        public static bool ping(string url)
+        {
+            try
+            {
+                using (var ping = new Ping())
+                {
+                    var result = ping.Send(url, 1000);
                     return result.Status == IPStatus.Success;
                 }
             }
@@ -363,7 +381,7 @@ namespace MultiLibGUI
         /// <returns>true - Сообщение отправлено, false - Сообщение не отправлено</returns>
         public static bool send(string fromEmail, string fromName, string toEmail, string subject, string textOrHtml, string smtpServer, int smtpPort, string smtpMail, string smtpPasswordMail, bool saveLogFails)
         {
-            if (ping.InternetConection())
+            if (internet.TestConnection())
             {
                 MailAddress from = new MailAddress(fromEmail, fromName);
                 MailAddress to = new MailAddress(toEmail);
@@ -490,6 +508,39 @@ namespace MultiLibGUI
                 MessageBox.Show("Файл не обнаружен!");
             }
         }
+    }
+    #endregion
+
+    #region Работа с MGeT
+    /// <summary>
+    /// Работа с MGeT
+    /// </summary>
+    public static class mget
+    {
+        /// <summary>
+        /// Получение файлов с репозитория
+        /// </summary>
+        /// <param name="url">Ссылка на репозитория</param>
+        /// <param name="pathTo">Путь на высадку</param>
+        public static void get(string url, string pathTo)
+        {
+            if (internet.ping(url))
+            {
+                Repository.Clone(url, pathTo);
+            }
+            else
+            {
+                if (internet.TestConnection())
+                {
+                    Console.WriteLine("Не удаётся установить подключение к сайту!");
+                }
+                else
+                {
+                    Console.WriteLine("Отсутствует интернет подключение!");
+                }
+            }
+        }
+
     }
     #endregion
 
