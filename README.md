@@ -17,6 +17,7 @@
 5. mail
 6. music
 7. compilator
+8. mget
 
 - MultiLibGUI
 1. basic
@@ -26,6 +27,7 @@
 5. mail
 6. music
 7. compilator
+8. mget
 
 # Функции
 - MultiLib
