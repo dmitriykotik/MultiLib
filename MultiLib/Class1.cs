@@ -20,7 +20,7 @@ using System.IO.Compression;
 using LibGit2Sharp;
 #endregion
 
-namespace MultiLibGUI
+namespace MultiLib
 {
     ///Все функции
     #region Стандартные команды
@@ -586,20 +586,21 @@ namespace MultiLibGUI
         /// <param name="pathTo">Путь на высадку</param>
         public static void get(string url, string pathTo)
         {
-            if (internet.ping(url))
+            if (internet.TestConnection())
             {
-                Repository.Clone(url, pathTo);
+                try
+                {
+                    Repository.Clone(url, pathTo);
+                }catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Console.ReadKey();
+                }
             }
             else
             {
-                if (internet.TestConnection())
-                {
-                    Console.WriteLine("Не удаётся установить подключение к сайту!");
-                }
-                else
-                {
-                    Console.WriteLine("Отсутствует интернет подключение!");
-                }
+                Console.WriteLine("Нет подключения к интернету!");
+                Console.ReadKey();
             }
         }
 
