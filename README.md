@@ -17,6 +17,7 @@
 5. mail
 6. music
 7. compilator
+8. mget
 
 - MultiLibGUI
 1. basic
@@ -26,6 +27,7 @@
 5. mail
 6. music
 7. compilator
+8. mget
 
 # Функции
 - MultiLib
@@ -65,6 +67,9 @@ VI. music
 VII. compilator
 1. collect(string inputSourceFile, string outputCompileFile)
 
+VIII. mget
+1. get(string url, string outputClonedFiles)
+
 
 - MultiLibGUI
 
@@ -98,6 +103,9 @@ VI. music
 
 VII. compilator
 1. collect(string inputSourceFile, string outputCompileFile)
+
+VIII. mget
+1. get(string url, string outputClonedFiles)
 
 # Документация
 Пока что тут нет документации, но обещаем, она тут будет. Будет она очень подробной с примерами. Спасибо за ожидание!
