@@ -1,4 +1,4 @@
-﻿#region Импорт библиотек (17 библиотек...)
+﻿#region Импорт библиотек (18 библиотек...)
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +18,8 @@ using Microsoft.CSharp;
 using System.CodeDom.Compiler;
 using System.IO.Compression;
 using LibGit2Sharp;
+using Google.Authenticator;
+using MultiLib;
 #endregion
 
 namespace MultiLibGUI
@@ -543,6 +545,97 @@ namespace MultiLibGUI
             }
         }
 
+    }
+    #endregion
+
+    #region Работа с генератором пароля
+    /// <summary>
+    /// Работа с генератором пароля
+    /// </summary>
+    public static class pass
+    {
+        /// <summary>
+        /// Генерация пароля
+        /// </summary>
+        /// <param name="length">Длина пароля</param>
+        /// <returns></returns>
+        public static string GenPassword(int length)
+        {
+            const string chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+            StringBuilder sb = new StringBuilder();
+            Random rnd = new Random();
+
+            for (int i = 0; i < length; i++)
+            {
+                int index = rnd.Next(chars.Length);
+                sb.Append(chars[index]);
+            }
+
+            return sb.ToString();
+        }
+    }
+    #endregion
+
+    #region Работа с Google Authenticator
+    /// <summary>
+    /// Работа с Google Authenticator
+    /// </summary>
+    public static class Authenticator
+    {
+        /// <summary>
+        /// Создание аутентификатора
+        /// </summary>
+        /// <param name="uName">Имя (пользователя и т.д.)</param>
+        /// <param name="uEmail">(Почта, телефон и т.д.)</param>
+        /// <param name="createQRForm">Создать QR-код для добавления и открыть его в новом графическом окне?</param>
+        /// <param name="visibleSecretKeyUserForAddAutentificator">Автоматически отобразить секретный ключ аутентификатора для пользователя, для добавления аутентификатора в программу?</param>>
+        /// <returns>Секретный ключ аутентификатора</returns>
+        public static string createAuthenticator(string uName, string uEmail, bool AUTOvisibleSecretKeyUserForAddAutentificator)
+        {
+            TwoFactorAuthenticator auth = new TwoFactorAuthenticator();
+            string password = pass.GenPassword(32);
+            var setupCode = auth.GenerateSetupCode(uName, uEmail, password, false, 3);
+            if (AUTOvisibleSecretKeyUserForAddAutentificator)
+            {
+                var qr = new qrAuth();
+                qr.Text = uName;
+                using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(setupCode.QrCodeSetupImageUrl.Replace("data:image/png;base64,", ""))))
+                    qr.start(uName, uEmail, password, ms);
+                
+            }
+
+            return password;
+        }
+
+        /// <summary>
+        /// Проверка верности кода
+        /// </summary>
+        /// <param name="secretKey">Секретный ключ аутентификатора</param>
+        /// <param name="enterPassword">Код введённый пользователем</param>
+        /// <returns>true - если код верен, false - если код не верный</returns>
+        public static bool checkEnterCode(string secretKey, string enteredPassword)
+        {
+            TwoFactorAuthenticator auth = new TwoFactorAuthenticator();
+            if (auth.ValidateTwoFactorPIN(secretKey, enteredPassword))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Получение текущего кода (не требуется в использовании с "checkEnterCode(secretKey, enteredPassword);")
+        /// </summary>
+        /// <param name="secretKey">Секретный ключ аутентификатора</param>
+        /// <returns>Текущий код доступа</returns>
+        public static string getCurrentCode(string secretKey)
+        {
+            return string.Join(System.Environment.NewLine, new TwoFactorAuthenticator().GetCurrentPINs(secretKey));
+        }
     }
     #endregion
 
