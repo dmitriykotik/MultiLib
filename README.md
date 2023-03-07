@@ -18,6 +18,8 @@
 6. music
 7. compilator
 8. mget
+9. pass
+10. Authenticator
 
 - MultiLibGUI
 1. basic
@@ -28,6 +30,8 @@
 6. music
 7. compilator
 8. mget
+9. pass
+10. Authenticator
 
 # Функции
 - MultiLib
@@ -70,6 +74,13 @@ VII. compilator
 VIII. mget
 1. get(string url, string outputClonedFiles)
 
+IX. pass
+1. GenPassword(int length)
+
+X. Authenticator
+1. createAuthenticator(string uName, string uEmail, bool AUTOvisibleSecretKeyUserForAddAutentificator, bool createQRForm)
+2. checkEnterCode(string secretKey, string enteredPassword)
+3. getCurrentCode(string secretKey)
 
 - MultiLibGUI
 
@@ -107,5 +118,17 @@ VII. compilator
 VIII. mget
 1. get(string url, string outputClonedFiles)
 
+IX. pass
+1. GenPassword(int length)
+
+X. Authenticator
+1. createAuthenticator(string uName, string uEmail, bool AUTOvisibleSecretKeyUserForAddAutentificator, bool createQRForm)
+2. checkEnterCode(string secretKey, string enteredPassword)
+3. getCurrentCode(string secretKey)
+
 # Документация
-Пока что тут нет документации, но обещаем, она тут будет. Будет она очень подробной с примерами. Спасибо за ожидание!
+В документации содержится: библиотека.класс.функция(аргументы) - описание
+
+- MultiID.basic.random(int start, int finish) - Генерация рандомного числа. Первый параметр означает от какого числа начать генерацию, второй параметр означает ДО какого числа закончить генирацию. Например: 1 аргумент-111111 2 аргумент-999999 Итог: 874674. Возвращает: Рандомное сгенирированное число
+
+- MultiID.basic.read(*string expectedText) - Активация пользовательского ввода данных. 1 аргумент являетсвя дополнительным и его можно не указывать. Он отвевает за проверку текста. Например: без аргумента, пользователь ввёл: 918 Итог: 918; 1 аргумент-918, пользователь ввёл 918 Итог: true; 1 аргумент-918, пользователь ввёл: 387, Итог: false. Возвращает: Без аргументов - Введённую строку пользователем; true - при наличии 1 аргумента, если пользователь ввёл текст который указан в аргументе; false - при наличии 1 аргумента, если строка пользователя не равна строке в аргументе.
