@@ -128,7 +128,7 @@ X. Authenticator
 
 # Документация
 В документации содержится: библиотека.класс.функция(аргументы) - описание
-'''
+'''Bath
 \
 /
 \
@@ -194,7 +194,7 @@ X. Authenticator
 - MultiLib.Authenticator.checkEnterCode(string secretKey, string enteredPassword) - Проверка правильности введёного кода из приложения. secretKey - секретный ключ аутентификатора; enteredPassword - введёный пользователем пароль.
 
 - MultiLib.Authenticator.getCurrentCode(string secretKey) - Получение действующего кода. secretKey - секретный ключ аутентификатора (данную функцию можно не использовать для проверки правильности кода!). Возвращает: Действующий код.
-'''
+'''Bath
 \
 /
 \
