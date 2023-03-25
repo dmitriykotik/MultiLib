@@ -298,6 +298,7 @@ To obtain a commercial contract, you need:
 - For what purposes do you need a contract and a library
 - Description of the program / game
 - If you receive the agreement for the 2nd time or more, you can attach the old license agreement received 1 time or other times, indicating the reason why the agreement was terminated
+
 Example: application form for obtaining a commercial contract for the first time:
 Subject: Obtaining a commercial contract for the MultiLib library
 Message: I'm Petr Ivanovich Dolinin, I want to get a contract for the first time. I want to use the MultiLib library for my horror game. It's just a normal horror game. The library is needed to work with INI and other functions. Here is my number and mail for communication: 00000000000 and d.petr@mail.ru
@@ -330,6 +331,7 @@ Console.WriteLine(@"При использовании библиотеки Multi
 - На какие цели нужен договор и библиотека
 - Описание работы программы/игры
 - Если вы получаете договор во 2-й раз или более, то можете прикрепить старое лицензионное соглашение полученной в 1 раз или другие разы, с указанием причины почему договор был расторгнут
+
 Пример: форма заявки на получение коммерческого договора впервые:
 Тема: Получение коммерческого договора на библиотеку MultiLib
 Сообщение: Я Долинин Пётр Иванович хочу получить договор впервые. Хочу использовать библиотеку MultiLib для своей хоррор-игры. Это обычная хоррор-игра. Библиотека нужна для работы с INI и другими функциями. Вот мой номер и почта для связи: 00000000000 и d.petr@mail.ru
