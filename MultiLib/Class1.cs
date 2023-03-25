@@ -1,11 +1,6 @@
-﻿#region Импорт библиотек (18 библиотек...)
+﻿#region Импорт библиотек (16 библиотек...)
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
-using System.Web;
 using System.Threading;
 using System.IO;
 using System.Security.Cryptography;
@@ -13,13 +8,13 @@ using System.Net.NetworkInformation;
 using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
-using WMPLib;
 using Microsoft.CSharp;
 using System.CodeDom.Compiler;
 using System.IO.Compression;
 using LibGit2Sharp;
 using Google.Authenticator;
-
+using IniParser;
+using IniParser.Model;
 #endregion
 
 namespace MultiLib
@@ -328,17 +323,14 @@ namespace MultiLib
         /// <param name="remoteDir">Удалённая папка в которую будет загружен файл (например: path/)</param>
         /// <param name="filename">Имя файла (например: example.mo)</param>
         /// <param name="localfullpath">Полный путь до файла на локальном компьютере (можно также использовать не полный путь до фала, но тогда файл должен находится в одной папке с программой) (например: C:\path\to\file.exmp; например: file.exmp)</param>
-        public static void upload(string host, string username, string password, string remoteDir, string filename, string localfullpath)
+        public static void upload(string host, string username, string password, string localfullpath)
         {
-            string ftpHost = host;
             string ftpUsername = username;
             string ftpPassword = password;
-            string ftpDirectory = remoteDir;
-            string fileName = filename;
             string filePath = localfullpath;
 
             // создаем объект запроса
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpHost + ftpDirectory + fileName);
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(host);
 
             // устанавливаем параметры запроса
             request.Method = WebRequestMethods.Ftp.UploadFile;
@@ -367,14 +359,8 @@ namespace MultiLib
         /// <param name="password">Вход: Пароль пользователя (например: Ex@mpleP@3w0rd)</param>
         /// <param name="remotePath">Удалённый полный путь из которого будет скачат файл (например: path/to\file.exmp)</param>
         /// <param name="localPath">Полный путь до файла который будет сохранён на локальном компьютере (можно также использовать не полный путь до фала, но тогда файл будет находится в одной папке с программой) (например: C:\path\to\file.exmp; например: file.exmp)</param>
-        public static void download(string host, string username, string password, string remotePath, string localPath)
+        public static void download(string host, string username, string password, string localPath)
         {
-            // Параметры FTP-сервера
-            string ftpServer = host;
-
-            // Путь к файлу на FTP-сервере
-            string remoteFilePath = remotePath;
-
             // Путь к локальному файлу
             string localFilePath = localPath;
 
@@ -384,7 +370,7 @@ namespace MultiLib
                 client.Credentials = new NetworkCredential(username, password);
 
                 // Скачиваем файл
-                client.DownloadFile(ftpServer + remoteFilePath, localFilePath);
+                client.DownloadFile(host, localFilePath);
             }
         }
         /// <summary>
@@ -703,6 +689,89 @@ namespace MultiLib
             return string.Join(System.Environment.NewLine, new TwoFactorAuthenticator().GetCurrentPINs(secretKey));
         }
     }
+    #endregion
+
+    #region Работа с INI файлами
+    /// <summary>
+    /// Класс работа с INI файлами
+    /// </summary>
+    public static class INI
+    {
+        /// <summary>
+        /// Получить текст из определённой переменной в секции файла
+        /// </summary>
+        /// <param name="pathToFile">Полный путь до файла</param>
+        /// <param name="Section">Секция</param>
+        /// <param name="variable">Переменная</param>
+        /// <returns>Код ошибки или текст из переменной (Вывод: 0x11 = Файл не существует; 0x21 = Указанная секция не существует; 0x31 = Указанная переменная не существует; (другое (текст)) = Вывод текст из переменной)</returns>
+        public static string get(string pathToFile, string Section, string variable)
+        {
+            if (!File.Exists(pathToFile))
+            {
+                return "0x11";
+            }
+            else
+            {
+                if (Section == "")
+                {
+                    return "0x21";
+                }
+                else
+                {
+                    if (variable == "")
+                    {
+                        return "0x31";
+                    }
+                    else
+                    {
+                        FileIniDataParser parser = new FileIniDataParser();
+                        IniData data = parser.ReadFile(pathToFile);
+                        return data[Section][variable];
+                    }
+                    
+                }
+            }
+        }
+
+        /// <summary>
+        /// Установка значения в определённую переменную в секиции файла
+        /// </summary>
+        /// <param name="pathToFile">Полный путь до файла</param>
+        /// <param name="Section">Секция</param>
+        /// <param name="variable">Переменная</param>
+        /// <param name="newTextForVariable">Новый текст на переменную</param>
+        /// <param name="returnMSGError">Показать сообщение об ошибке если она будет?</param>
+        public static void set(string pathToFile, string Section, string variable, string newTextForVariable, bool returnMSGError)
+        {
+            if (!File.Exists(pathToFile))
+            {
+                if(returnMSGError){MessageBox.Show($"Файла {pathToFile} несуществует!", "Ошибка!");}
+            }
+            else
+            {
+                if (Section == "")
+                {
+                    if(returnMSGError){MessageBox.Show("Аргумент Секция пуст!", "Ошибка!");}
+                }
+                else
+                {
+                    if (variable == "")
+                    {
+                        if(returnMSGError){MessageBox.Show("Аргумент Переменная пуст!", "Ошибка!");}
+                    }
+                    else
+                    {
+
+                        FileIniDataParser parser = new FileIniDataParser();
+                        IniData data = parser.ReadFile(pathToFile);
+                        data[Section][variable] = newTextForVariable;
+                    }
+                    
+                }
+            }
+        }
+    }
+
     #endregion
 
 }

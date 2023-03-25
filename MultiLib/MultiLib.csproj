@@ -41,6 +41,9 @@
     <Reference Include="Google.Authenticator, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GoogleAuthenticator.3.0.0\lib\net462\Google.Authenticator.dll</HintPath>
     </Reference>
+    <Reference Include="INIFileParserDotNetCore, Version=2.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\INIFileParserDotNetCore.2.5.2\lib\net40\INIFileParserDotNetCore.dll</HintPath>
+    </Reference>
     <Reference Include="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WMPLib.1.0.0\lib\Interop.WMPLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>

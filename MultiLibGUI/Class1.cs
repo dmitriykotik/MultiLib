@@ -266,17 +266,14 @@ namespace MultiLibGUI
         /// <param name="remoteDir">Удалённая папка в которую будет загружен файл (например: path/)</param>
         /// <param name="filename">Имя файла (например: example.mo)</param>
         /// <param name="localfullpath">Полный путь до файла на локальном компьютере (можно также использовать не полный путь до фала, но тогда файл должен находится в одной папке с программой) (например: C:\path\to\file.exmp; например: file.exmp)</param>
-        public static void upload(string host, string username, string password, string remoteDir, string filename, string localfullpath)
+        public static void upload(string host, string username, string password, string localfullpath)
         {
-            string ftpHost = host;
             string ftpUsername = username;
             string ftpPassword = password;
-            string ftpDirectory = remoteDir;
-            string fileName = filename;
             string filePath = localfullpath;
 
             // создаем объект запроса
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpHost + ftpDirectory + fileName);
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(host);
 
             // устанавливаем параметры запроса
             request.Method = WebRequestMethods.Ftp.UploadFile;
@@ -305,14 +302,8 @@ namespace MultiLibGUI
         /// <param name="password">Вход: Пароль пользователя (например: Ex@mpleP@3w0rd)</param>
         /// <param name="remotePath">Удалённый полный путь из которого будет скачат файл (например: path/to\file.exmp)</param>
         /// <param name="localPath">Полный путь до файла который будет сохранён на локальном компьютере (можно также использовать не полный путь до фала, но тогда файл будет находится в одной папке с программой) (например: C:\path\to\file.exmp; например: file.exmp)</param>
-        public static void download(string host, string username, string password, string remotePath, string localPath)
+        public static void download(string host, string username, string password, string localPath)
         {
-            // Параметры FTP-сервера
-            string ftpServer = host;
-
-            // Путь к файлу на FTP-сервере
-            string remoteFilePath = remotePath;
-
             // Путь к локальному файлу
             string localFilePath = localPath;
 
@@ -322,7 +313,7 @@ namespace MultiLibGUI
                 client.Credentials = new NetworkCredential(username, password);
 
                 // Скачиваем файл
-                client.DownloadFile(ftpServer + remoteFilePath, localFilePath);
+                client.DownloadFile(host, localFilePath);
             }
         }
         /// <summary>
