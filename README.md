@@ -276,6 +276,6 @@ XI. INI
 - MultiLib.INI.set(string pathToFile, string Section, string variable, string newTextForVariable, bool returnMSGError) - Установка значения в определённую переменную в секиции файла; pathToFile - Полный путь до файла; Section - Секция; variable - Переменная; newTextForVariable - Новый текст на переменную; returnMSGError - Показать сообщение об ошибке если она будет?
 
 # Лицензионное соглашение
-'''python
+```python
 printf("License file")
-'''
+```
