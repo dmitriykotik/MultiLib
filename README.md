@@ -279,7 +279,11 @@ XI. INI
 ```python
 printf("The actual license agreement of the MultiPlayer company for the MultiLib library for copyright compliance.")
 printf("(C) MultiPlayer 2019 - 2023. All rights reserved.")
-Application.Exit()
+if ready:
+  continue
+else:
+  printf("You not ready!")
+  Application.Exit()
 ```
 ```python
 printf("English version:")
