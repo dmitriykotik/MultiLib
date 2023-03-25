@@ -276,8 +276,8 @@ XI. INI
 - MultiLib.INI.set(string pathToFile, string Section, string variable, string newTextForVariable, bool returnMSGError) - Установка значения в определённую переменную в секиции файла; pathToFile - Полный путь до файла; Section - Секция; variable - Переменная; newTextForVariable - Новый текст на переменную; returnMSGError - Показать сообщение об ошибке если она будет?
 
 # Лицензионное соглашение
-```С#
-Console.WriteLine("The actual license agreement of the MultiPlayer company for the MultiLib library for copyright compliance.")
-Console.WriteLine("(C) MultiPlayer 2019 - 2023. All rights reserved.");
+```python
+printf("The actual license agreement of the MultiPlayer company for the MultiLib library for copyright compliance.")
+printf("(C) MultiPlayer 2019 - 2023. All rights reserved.");
 Application.Exit();
 ```
