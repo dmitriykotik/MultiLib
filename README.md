@@ -20,6 +20,7 @@
 8. mget
 9. pass
 10. Authenticator
+11. INI
 
 - MultiLibGUI
 1. basic
@@ -32,6 +33,7 @@
 8. mget
 9. pass
 10. Authenticator
+11. INI
 
 # Функции
 - MultiLib
@@ -82,6 +84,10 @@ X. Authenticator
 2. checkEnterCode(string secretKey, string enteredPassword)
 3. getCurrentCode(string secretKey)
 
+XI. INI
+1. get(string pathToFile, string Section, string variable)
+2. set(string pathToFile, string Section, string variable, string newTextForVariable, bool returnMSGError)
+
 - MultiLibGUI
 
 I. basic
@@ -125,6 +131,10 @@ X. Authenticator
 1. createAuthenticator(string uName, string uEmail, bool AUTOvisibleSecretKeyUserForAddAutentificator, bool createQRForm)
 2. checkEnterCode(string secretKey, string enteredPassword)
 3. getCurrentCode(string secretKey)
+
+XI. INI
+1. get(string pathToFile, string Section, string variable)
+2. set(string pathToFile, string Section, string variable, string newTextForVariable, bool returnMSGError)
 
 # Документация
 В документации содержится: библиотека.класс.функция(аргументы) - описание
@@ -197,6 +207,10 @@ X. Authenticator
 
 - MultiLib.Authenticator.getCurrentCode(string secretKey) - Получение действующего кода. secretKey - секретный ключ аутентификатора (данную функцию можно не использовать для проверки правильности кода!). Возвращает: Действующий код.
 
+- MultiLib.INI.get(string pathToFile, string Section, string variable) - Получение текста из определённой переменной в секции файла. pathToFile - Полный путь до файла; Section - Секция; variable - Переменная; Возвращает: Код ошибки или текст из переменной (Вывод: 0x11 = Файл не существует; 0x21 = Указанная секция не существует; 0x31 = Указанная переменная не существует; (другое (текст)) = Вывод текст из переменной)
+
+- MultiLib.INI.set(string pathToFile, string Section, string variable, string newTextForVariable, bool returnMSGError) - Установка значения в определённую переменную в секиции файла; pathToFile - Полный путь до файла; Section - Секция; variable - Переменная; newTextForVariable - Новый текст на переменную; returnMSGError - Показать сообщение об ошибке если она будет?
+
 ``` bash
 \
 /
@@ -256,3 +270,7 @@ X. Authenticator
 - MultiLibGUI.Authenticator.checkEnterCode(string secretKey, string enteredPassword) - Проверка правильности введёного кода из приложения. secretKey - секретный ключ аутентификатора; enteredPassword - введёный пользователем пароль.
 
 - MultiLibGUI.Authenticator.getCurrentCode(string secretKey) - Получение действующего кода. secretKey - секретный ключ аутентификатора (данную функцию можно не использовать для проверки правильности кода!). Возвращает: Действующий код.
+
+- MultiLib.INI.get(string pathToFile, string Section, string variable) - Получение текста из определённой переменной в секции файла. pathToFile - Полный путь до файла; Section - Секция; variable - Переменная; Возвращает: Код ошибки или текст из переменной (Вывод: 0x11 = Файл не существует; 0x21 = Указанная секция не существует; 0x31 = Указанная переменная не существует; (другое (текст)) = Вывод текст из переменной)
+
+- MultiLib.INI.set(string pathToFile, string Section, string variable, string newTextForVariable, bool returnMSGError) - Установка значения в определённую переменную в секиции файла; pathToFile - Полный путь до файла; Section - Секция; variable - Переменная; newTextForVariable - Новый текст на переменную; returnMSGError - Показать сообщение об ошибке если она будет?
