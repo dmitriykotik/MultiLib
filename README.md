@@ -281,3 +281,56 @@ printf("The actual license agreement of the MultiPlayer company for the MultiLib
 printf("(C) MultiPlayer 2019 - 2023. All rights reserved.");
 Application.Exit();
 ```
+```python
+printf("English version:")
+```
+By using the MultiLib library, you acknowledge that the library is being used for NON-COMMERCIAL PURPOSES only! If you are going to use the library for your software for commercial purposes, then you will need to request permission by mail multiplayercorporation@gmail.com to use the library for commercial purposes. In the same place, you must discuss the terms of use for commercial purposes. The publisher of MultiPlayer reserves the right to ask you for a fee for using the library, but no more than once every 2 months. If the Publisher of MultiPlayer asks for a fee again before the expiration date, the contract will be terminated and the recipient of the service will receive additional time to use the received service. If the contract has expired/You have terminated the contract with the publisher of MultiPlayer/By breach of the contract, additional (free time outside the contract) time has expired, and you are not going to enter into a new contract with the publisher of MultiPlayer, then you MUST remove the MultiLib library from your project. In order to verify ownership of the MultiPlayer contract, you must add the "Publication Contract" to some tab in your software (For example: Settings). Upon receipt of the contract, you will receive: 1. The main contract to confirm ownership of a copy of the MultiLib library; 2. Secondary contract for publication with a unique code to add to the software section, to confirm the ownership of a copy of the MultiID library for commercial purposes. The publisher of MultiPlayer has the right to request an up-to-date version of your software to check for a "Publication Agreement" or to check for unacceptable things. The publisher of MultiPlayer has the right to terminate the agreement if there is no "Agreement for publication" when checking the software (the Agreement will be terminated if this is a version for publication on the site or in any other place, if it is a version for). The recipient of the service has the right to terminate the contract at any time with a reason, in which case the unique code becomes invalid, and the recipient of the service MUST remove the library from his program. If these actions are not completed within 7 days after the termination of the contract, the publisher of MultiPlayer remains entitled to request a cash equivalent of up to $100 USD. After receiving the contract, save the received license agreement (this is the license agreement) with a unique code, if the license agreement suddenly changes, then you will continue to use the MultiLib library under the license agreement that you received. If you receive a new contract for the MultiLib library, then you can optionally attach the license agreement that you received the first time, from which you can continue to work on the old license agreement. Also, upon receipt of a new contract, you can use the new license agreement.
+!!! The MultiLib library is also suitable for creating games in C # (for example, in Unity), while games for publishing on the Internet require a commercial contract!
+To obtain a commercial contract, you need:
+- Full name (middle name if any)
+- Phone number
+- Mail
+- For what purposes do you need a contract and a library
+- Description of the program / game
+- If you receive the agreement for the 2nd time or more, you can attach the old license agreement received 1 time or other times, indicating the reason why the agreement was terminated
+Example: application form for obtaining a commercial contract for the first time:
+Subject: Obtaining a commercial contract for the MultiLib library
+Message: I'm Petr Ivanovich Dolinin, I want to get a contract for the first time. I want to use the MultiLib library for my horror game. It's just a normal horror game. The library is needed to work with INI and other functions. Here is my number and mail for communication: 00000000000 and d.petr@mail.ru
+
+Example: application form for obtaining a commercial contract for the 2nd time or more:
+Subject: Obtaining a commercial contract for the MultiLib library
+Message: I'm Dolinin Petr Ivanovich, I want to get a contract again (3rd time). The contract was terminated due to the fact that the term of the contract had expired. I noticed that the license agreement has recently changed, I'm not satisfied with the new license agreement, so I want to get an agreement under the old license agreement (* Attached file with a unique old-style license agreement *). If possible, I want to get a contract under the old terms.
+
+No contract required for NON-COMMERCIAL use!
+
+What is meant by commercial use in this form:
+- Uploading the program to the Internet (for example: On your site, On SOFTPORTAL. Exceptions: Uploading the program on GitHub)
+- For use in a company larger than 10 people
+- For use in a popular program
+
+```python
+printf("Russian version")
+```
+При использовании библиотеки MultiLib вы принимаете, что библиотека используется только для НЕКОММЕРЧЕСКИХ ЦЕЛЕЙ! Если же вы собираетесь использовать библиотеку для своего ПО в коммерческих целях, то вы должны будете запросить разрешение по почте multiplayercorporation@gmail.com на использовании библиотеки в коммерческих целях. Там же вы должны обговорить условия использования в коммерческих целях. Издатель MultiPlayer остаётся в праве запросить у вас некую плату за использование библиотеки, но не чаще чем раз в 2 месяца. Если же Издатель MultiPlayer запросит плату ещё раз не вышедшего срока, то договор будет расторгнут и получатель услуги получит дополнительное время, на использование полученной услуги. Если срок договора истёк/Вы расторгли договор с издателем MultiPlayer/При нарушении договора истекло дополнительное (бесплатное время вне договора) время, и вы не собираетесь заключить новый договор с издателем MultiPlayer, то вы ОБЯЗАНЫ удалить библиотеку MultiLib из своего проекта. Для подтверждения владения договором MultiPlayer вы должны добавить "Договор для публикации" в какую нибудь вкладку в вашем ПО (Например: Настройки). При получении договора вы получаете: 1. Основной договор для подтверждения о владении копии библиотеки MultiLib; 2. Вторичный договор для публикации с уникальным кодом для добавления в раздел ПО, для подтверждения владении копии библиотеки MultiID в коммерческих целях. Издатель MultiPlayer в праве запросить актуальную версию вашего ПО для проверки наличия "Договора для публикации" или для проверки наличия неприемлемых вещей. Издатель MultiPlayer в праве расторгнуть договор если при проверке ПО не будет "Договора для публикации" (Договор будет расторгнут в том случае если это версия для публикации на сайт или в любое другое место, если же это версия для). Получатель услуги остаётся в праве расторгнуть договор в любой момент с указанием причины, при этом уникальный код становится не действительным, и получатель услуги ОБЯЗАН удалить библиотеку из своей программы. Если указанные действия не будут выполнены в течение 7 дней после остановки действия договора, то издатель MultiPlayer остаётся в праве запросить денежный эквивалент в размере до 100$ США. После получения договора сохраните полученное лицензионное соглашение (это лицензионное соглашение) с уникальным кодом, если вдруг лицензионное соглашение изменится, то вы будете продолжать пользоваться библиотекой MultiLib по лицензионному соглашению которое вы получили. Если вы получаете новый договор на библиотеку MultiLib, то вы при желании можете прикрепить лицензионное соглашение которое вы получили в первый раз, из чего вы можете продолжать работу на старом лицензионном соглашении. Также при получении нового договора вы можете воспользоваться новым лицензионным соглашением.
+!!! Библиотека MultiLib также подходит для создания игр на C# (например на Unity), при этом на игры для публикации в интернете нужен обязательно коммерческий договор!
+Для получения коммерческого договора нужно:
+- ФИО (отчество если есть)
+- Номер телефона
+- Почта
+- На какие цели нужен договор и библиотека
+- Описание работы программы/игры
+- Если вы получаете договор во 2-й раз или более, то можете прикрепить старое лицензионное соглашение полученной в 1 раз или другие разы, с указанием причины почему договор был расторгнут
+Пример: форма заявки на получение коммерческого договора впервые:
+Тема: Получение коммерческого договора на библиотеку MultiLib
+Сообщение: Я Долинин Пётр Иванович хочу получить договор впервые. Хочу использовать библиотеку MultiLib для своей хоррор-игры. Это обычная хоррор-игра. Библиотека нужна для работы с INI и другими функциями. Вот мой номер и почта для связи: 00000000000 и d.petr@mail.ru
+
+Пример: форма заявки на получение коммерческого договора в 2-й раз и более:
+Тема: Получение коммерческого договора на библиотеку MultiLib
+Сообщение: Я Долинин Пётр Иванович хочу получить повторно договор (3-й раз). Договор был расторгнут из-за того, что истёк срок договора. Я заметил, что недавно изменилось лицензионное соглашение, меня не устраивает новое лицензионное соглашение, поэтому я хочу получить договор по старому лицензионному соглашению (* Прикреплённый файл с уникальным лицензионным соглашением старого образца *). Если возможно, то я хочу получить договор по старым условиям.
+
+Для НЕКОММЕРЧЕСКОГО использования договор не требуется!
+
+Что подразумевается под коммерческое использование в этой форме:
+- Выкладывание программы в интернет (например: На свой сайт, На SOFTPORTAL. Исключения: Выкладывание программы на GitHub)
+- Для использования в компании размером больше 10 человек
+- Для использования в популярной программе
