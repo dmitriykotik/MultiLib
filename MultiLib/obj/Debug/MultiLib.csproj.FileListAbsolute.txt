@@ -1,0 +1,14 @@
+C:\Users\dmitryy\source\repos\MultiLib\MultiLib\bin\Debug\MultiLib.dll
+C:\Users\dmitryy\source\repos\MultiLib\MultiLib\bin\Debug\MultiLib.pdb
+C:\Users\dmitryy\source\repos\MultiLib\MultiLib\obj\Debug\MultiLib.csproj.AssemblyReference.cache
+C:\Users\dmitryy\source\repos\MultiLib\MultiLib\obj\Debug\MultiLib.csproj.CoreCompileInputs.cache
+C:\Users\dmitryy\source\repos\MultiLib\MultiLib\obj\Debug\MultiLib.dll
+C:\Users\dmitryy\source\repos\MultiLib\MultiLib\obj\Debug\MultiLib.pdb
+C:\Users\dmitryy\source\repos\MultiLib\MultiLib\bin\Debug\Microsoft.Win32.Registry.dll
+C:\Users\dmitryy\source\repos\MultiLib\MultiLib\bin\Debug\System.Security.AccessControl.dll
+C:\Users\dmitryy\source\repos\MultiLib\MultiLib\bin\Debug\System.Security.Principal.Windows.dll
+C:\Users\dmitryy\source\repos\MultiLib\MultiLib\bin\Debug\Microsoft.Win32.Registry.xml
+C:\Users\dmitryy\source\repos\MultiLib\MultiLib\bin\Debug\System.Security.AccessControl.xml
+C:\Users\dmitryy\source\repos\MultiLib\MultiLib\bin\Debug\System.Security.Principal.Windows.xml
+C:\Users\dmitryy\source\repos\MultiLib\MultiLib\obj\Debug\MultiLib.csproj.CopyComplete
+C:\Users\dmitryy\source\repos\MultiLib\MultiLib\bin\Debug\AxInterop.WMPLib.dll
