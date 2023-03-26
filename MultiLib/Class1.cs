@@ -765,6 +765,7 @@ namespace MultiLib
                         FileIniDataParser parser = new FileIniDataParser();
                         IniData data = parser.ReadFile(pathToFile);
                         data[Section][variable] = newTextForVariable;
+                        parser.WriteFile(pathToFile, data);
                     }
                     
                 }
