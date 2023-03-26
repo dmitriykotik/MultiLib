@@ -146,7 +146,13 @@ namespace MultiLib
     {
         private const int BufferSize = 1048576;
 
-        public static void CryptFile(string inputFile, string outputFile, string password)
+        /// <summary>
+        /// Шифрование файла
+        /// </summary>
+        /// <param name="inputFile">Входной файл</param>
+        /// <param name="outputFile">Выходной файл</param>
+        /// <param name="password">Пароль на файл для дешифровки</param>
+        public static void EncryptFile(string inputFile, string outputFile, string password)
         {
             try
             {
@@ -182,6 +188,12 @@ namespace MultiLib
             }
         }
 
+        /// <summary>
+        /// Дешифровка файла
+        /// </summary>
+        /// <param name="inputFile">Входной файл</param>
+        /// <param name="outputFile">Выходной файл</param>
+        /// <param name="password">Пароль на дешифровку</param>
         public static void DecryptFile(string inputFile, string outputFile, string password)
         {
             try { 
