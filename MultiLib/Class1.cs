@@ -15,6 +15,8 @@ using LibGit2Sharp;
 using Google.Authenticator;
 using IniParser;
 using IniParser.Model;
+using System.Collections;
+using System.Windows.Input;
 #endregion
 
 namespace MultiLib
@@ -142,80 +144,81 @@ namespace MultiLib
     /// </summary>
     public static class czipC
     {
-        /// <summary>
-        /// Зашифровка файла/архива
-        /// </summary>
-        /// <param name="inputFile">Файл входа (например: example.txt)</param>
-        /// <param name="outputFile">Выходной файл (например: exapmple.enc)</param>
-        /// <param name="password">Установка пароля для расшифровки</param>
-        public static void EncryptFile(string inputFile, string outputFile, string password)
-        {
+        private const int BufferSize = 1048576;
 
+        public static void CryptFile(string inputFile, string outputFile, string password)
+        {
             try
             {
                 UnicodeEncoding UE = new UnicodeEncoding();
                 byte[] key = UE.GetBytes(password);
 
-                string cryptFile = outputFile;
-                FileStream fsCrypt = new FileStream(cryptFile, FileMode.Create);
-
                 RijndaelManaged RMCrypto = new RijndaelManaged();
+                RMCrypto.Mode = CipherMode.CBC;
 
-                CryptoStream cs = new CryptoStream(fsCrypt,
-                RMCrypto.CreateEncryptor(key, key),
-                CryptoStreamMode.Write);
+                byte[] iv = RMCrypto.IV;
 
-                FileStream fsIn = new FileStream(inputFile, FileMode.Open);
+                using (FileStream fsCrypt = new FileStream(outputFile, FileMode.Create))
+                {
+                    fsCrypt.Write(iv, 0, iv.Length);
 
-                int data;
-                while ((data = fsIn.ReadByte()) != -1)
-                    cs.WriteByte((byte)data);
+                    using (CryptoStream cs = new CryptoStream(fsCrypt, RMCrypto.CreateEncryptor(key, iv), CryptoStreamMode.Write))
+                    {
+                        using (FileStream fsIn = new FileStream(inputFile, FileMode.Open))
+                        {
+                            byte[] buffer = new byte[BufferSize];
+                            int read;
 
-
-                fsIn.Close();
-                cs.Close();
-                fsCrypt.Close();
-            }
-            catch
+                            while ((read = fsIn.Read(buffer, 0, buffer.Length)) > 0)
+                            {
+                                cs.Write(buffer, 0, read);
+                            }
+                        }
+                    }
+                }
+            }catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
         }
 
-        /// <summary>
-        /// Расшифровка файла/архива.
-        /// </summary>
-        /// <param name="inputFile">Входной файл (например: example.enc)</param>
-        /// <param name="outputFile">Выходной файл (например: example.txt)</param>
-        /// <param name="password">Пароль для расшифровки</param>
         public static void DecryptFile(string inputFile, string outputFile, string password)
         {
+            try { 
+            UnicodeEncoding UE = new UnicodeEncoding();
+            byte[] key = UE.GetBytes(password);
 
+            RijndaelManaged RMCrypto = new RijndaelManaged();
+            RMCrypto.Mode = CipherMode.CBC;
+
+            byte[] iv = new byte[16];
+
+            using (FileStream fsCrypt = new FileStream(inputFile, FileMode.Open))
             {
-                UnicodeEncoding UE = new UnicodeEncoding();
-                byte[] key = UE.GetBytes(password);
+                fsCrypt.Read(iv, 0, iv.Length);
 
-                FileStream fsCrypt = new FileStream(inputFile, FileMode.Open);
+                using (CryptoStream cs = new CryptoStream(fsCrypt, RMCrypto.CreateDecryptor(key, iv), CryptoStreamMode.Read))
+                {
+                    using (FileStream fsOut = new FileStream(outputFile, FileMode.Create))
+                    {
+                        byte[] buffer = new byte[BufferSize];
+                        int read;
 
-                RijndaelManaged RMCrypto = new RijndaelManaged();
-
-                CryptoStream cs = new CryptoStream(fsCrypt,
-                RMCrypto.CreateDecryptor(key, key),
-                CryptoStreamMode.Read);
-
-                FileStream fsOut = new FileStream(outputFile, FileMode.Create);
-
-                int data;
-                while ((data = cs.ReadByte()) != -1)
-                    fsOut.WriteByte((byte)data);
-
-                fsOut.Close();
-                cs.Close();
-                fsCrypt.Close();
-
+                        while ((read = cs.Read(buffer, 0, buffer.Length)) > 0)
+                        {
+                            fsOut.Write(buffer, 0, read);
+                        }
+                    }
+                }
+            }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
-        public static void compress(string pathFoler, string outputArchive)
+    
+    public static void compress(string pathFoler, string outputArchive)
         {
             if (Directory.Exists(pathFoler))
             {
@@ -485,6 +488,7 @@ namespace MultiLib
     #endregion
 
     #region Работа с музыкальными файлами
+    /*
     /// <summary>
     /// Класс работы с музыкальными файлами
     /// </summary>
@@ -517,6 +521,7 @@ namespace MultiLib
             wplayer.controls.pause();
         }
     }
+    */
     #endregion
 
     #region Работа с компилятором кода C#

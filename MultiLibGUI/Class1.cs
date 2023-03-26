@@ -424,6 +424,7 @@ namespace MultiLibGUI
     #endregion
 
     #region Работа с музыкальными файлами
+    /*
     /// <summary>
     /// Класс работы с музыкальными файлами
     /// </summary>
@@ -456,6 +457,7 @@ namespace MultiLibGUI
             wplayer.controls.pause();
         }
     }
+    */
     #endregion
 
     #region Работа с компилятором кода C#
@@ -562,6 +564,7 @@ namespace MultiLibGUI
             return sb.ToString();
         }
     }
+    
     #endregion
 
     #region Работа с Google Authenticator
