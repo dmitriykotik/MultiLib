@@ -15,11 +15,7 @@ using LibGit2Sharp;
 using Google.Authenticator;
 using IniParser;
 using IniParser.Model;
-using System.Collections;
-using System.Windows.Input;
 using System.Diagnostics;
-using System.Net.Http.Json;
-using System.Text.Json.Serialization;
 #endregion
 
 namespace MultiLib
@@ -867,22 +863,6 @@ namespace MultiLib
         }
     }
 
-    #endregion
-
-    #region Работа с OpenAI
-    /// <summary>
-    /// Работа с OpenAI
-    /// </summary>
-    public static class OpenAI
-    {
-        /// <summary>
-        /// Работа с GPT (без использования вопроса в вызове метода)
-        /// </summary>
-        public static void gpt()
-        {
-
-        }
-    }
     #endregion
 
 }
