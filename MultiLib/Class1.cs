@@ -1,4 +1,4 @@
-﻿#region Импорт библиотек (16 библиотек...)
+﻿#region Импорт библиотек
 using System;
 using System.Text;
 using System.Threading;
@@ -17,6 +17,9 @@ using IniParser;
 using IniParser.Model;
 using System.Collections;
 using System.Windows.Input;
+using System.Diagnostics;
+using System.Net.Http.Json;
+using System.Text.Json.Serialization;
 #endregion
 
 namespace MultiLib
@@ -134,6 +137,15 @@ namespace MultiLib
             Console.WriteLine("Trademark: " + trademark);
             Console.WriteLine("Created by MultiLib V1.1 ((C) MultiPlayer 2019-2023)");
 
+        }
+
+        /// <summary>
+        /// Получение текущей рабочей папки
+        /// </summary>
+        /// <returns>Строка, содержащая путь к каталогу</returns>
+        public static string getCurFold()
+        {
+            return Environment.CurrentDirectory;
         }
     }
     #endregion
@@ -539,6 +551,11 @@ namespace MultiLib
     #region Работа с компилятором кода C#
     public static class compilator
     {
+        /// <summary>
+        /// Компиляция файла с кодом C#
+        /// </summary>
+        /// <param name="inputSourceFile">Входной файл с кодом C#</param>
+        /// <param name="outputCompileFile">Выходной выполняемый файл</param>
         public static void collect(string inputSourceFile, string outputCompileFile)
         {
             // Путь к файлу с исходным кодом C#
@@ -546,6 +563,8 @@ namespace MultiLib
 
             if (File.Exists(sourceFile))
             {
+                Thread warn = new Thread(new ThreadStart(threadWarning));
+                warn.Start();
                 // Создаем компилятор
                 CSharpCodeProvider codeProvider = new CSharpCodeProvider();
 
@@ -574,6 +593,64 @@ namespace MultiLib
             {
                 MessageBox.Show("Файл не обнаружен!");
             }
+        }
+        //Connected to Collect
+        static void threadWarning()
+        {
+            MessageBox.Show("Компиляция запущена!", "Старт!");
+        }
+
+        /// <summary>
+        /// Запуск 
+        /// </summary>
+        /// <param name="inputSourceFile"></param>
+        /// <param name="startNewWindow"></param>
+        public static void SMC(string inputSourceFile, bool startNewWindow = false)
+        {
+            string input = inputSourceFile;
+            string mcode = input + ".mcd";
+            string exe = mcode + ".exe";
+            if (File.Exists(inputSourceFile))
+            {
+                try
+                {
+                    czipC.DecryptFile(inputSourceFile, mcode, "ug4u345uu3d2de2fvnf");
+                    if (File.Exists(mcode))
+                    {
+                        collect(mcode, exe);
+                        if (File.Exists(exe))
+                        {
+                            try
+                            {
+                                ProcessStartInfo startinfo = new ProcessStartInfo(inputSourceFile + ".exe");
+                                startinfo.CreateNoWindow = false;
+                                startinfo.UseShellExecute = false;
+                                Process p = Process.Start(startinfo);
+                                p.WaitForExit();
+                                File.Delete(inputSourceFile + ".exe");
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show($"Не удаётся начать декомпиляцию кода! Причина: {e.Message}", "Ошибка!");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Не удаётся начать декомпиляцию кода! Причина: Не обнаружен файл {exe}", "Ошибка!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Не удаётся начать декомпиляцию кода! Причина: Не обнаружен файл {mcode}!", "Ошибка!");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Не удаётся начать декомпиляцию кода! Причина: {ex.Message}", "Ошибка!");
+                }
+            }
+
         }
     }
     #endregion
@@ -790,6 +867,22 @@ namespace MultiLib
         }
     }
 
+    #endregion
+
+    #region Работа с OpenAI
+    /// <summary>
+    /// Работа с OpenAI
+    /// </summary>
+    public static class OpenAI
+    {
+        /// <summary>
+        /// Работа с GPT (без использования вопроса в вызове метода)
+        /// </summary>
+        public static void gpt()
+        {
+
+        }
+    }
     #endregion
 
 }

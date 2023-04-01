@@ -1,4 +1,4 @@
-﻿#region Импорт библиотек (17 библиотек...)
+﻿#region Импорт библиотек
 using System;
 using System.Text;
 using System.Threading;
@@ -71,6 +71,15 @@ namespace MultiLibGUI
             AboutBox1 ab = new AboutBox1();
             ab.Show();
 
+        }
+
+        /// <summary>
+        /// Получение текущей рабочей папки
+        /// </summary>
+        /// <returns>Строка, содержащая путь к каталогу</returns>
+        public static string getCurFold()
+        {
+            return Environment.CurrentDirectory;
         }
     }
     #endregion
