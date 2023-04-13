@@ -337,6 +337,15 @@ namespace MultiLibGUI
                 client.DownloadFile(host, localFilePath);
             }
         }
+
+        public static void delete(string host, string username, string password)
+        {
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(host);
+            request.Method = WebRequestMethods.Ftp.DeleteFile;
+            request.Credentials = new NetworkCredential(username, password);
+            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+            response.Close();
+        }
         /// <summary>
         /// Проверка наличия файла на FTP сервере
         /// </summary>
