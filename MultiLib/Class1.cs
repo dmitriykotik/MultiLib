@@ -16,6 +16,8 @@ using Google.Authenticator;
 using IniParser;
 using IniParser.Model;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using Microsoft.Win32;
 #endregion
 
 namespace MultiLib
@@ -790,7 +792,7 @@ namespace MultiLib
     }
     #endregion
 
-    #region Работа с INI файлами
+    #region Работа с INI файлами (не очень то и актуально)
     /// <summary>
     /// Класс работа с INI файлами
     /// </summary>
@@ -872,6 +874,50 @@ namespace MultiLib
         }
     }
 
+    #endregion
+
+    #region Работа с RegEdit
+    public static class regedit
+    {
+        public static void createSubKey(RegistryKey key, string nameSubKey)
+        {
+            RegistryKey type2 = key;
+            RegistryKey type3 = type2.CreateSubKey(nameSubKey);
+            type3.Close();
+        }
+
+        public static void deleteSubKey(RegistryKey key, string nameSubKey)
+        {
+            RegistryKey type2 = key;
+            type2.DeleteSubKey(nameSubKey);
+            type2.Close();
+        }
+
+        public static void setValue(RegistryKey key, string nameSubKey, string name, string value)
+        {
+            RegistryKey type2 = key;
+            RegistryKey type3 = type2.OpenSubKey(nameSubKey, true);
+            type3.SetValue(name, value);
+            type3.Close();
+        }
+
+        public static string readValue(RegistryKey key, string nameSubKey, string name)
+        {
+            RegistryKey type2 = key;
+            RegistryKey type3 = type2.OpenSubKey(nameSubKey, true);
+            string value = type3.GetValue(name).ToString();
+            type3.Close();
+            return value;
+        }
+
+        public static void deleteValue(RegistryKey key, string nameSubKey, string name)
+        {
+            RegistryKey type2 = key;
+            RegistryKey type3 = type2.OpenSubKey(nameSubKey, true);
+            type3.DeleteValue(name);
+            type3.Close();
+        }
+    }
     #endregion
 
 }
