@@ -1,5 +1,8 @@
 # MultiLib
-Проект временно приостановлен. Максимальный срок приостановки до 31 Декабря 2023 года 13:00 GMT +3 Moscow
+Проект временно приостановлен навсегда!
+
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
 
 Библиотека для разрабочиков. Создана для сокращения кода. Библиотека будет входить в состав MultiDeveloperKit и MultiRedistributable.
 
@@ -14,8 +17,12 @@
 
 # Помоги в разработке
 Вы можете исправлять или добавлять свой код для библиотек MultiLib с помощью раздела Pull requests! Подробнее: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
 
 # Классы
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
 - MultiLib
 1. basic
 2. czipC
@@ -43,6 +50,8 @@
 11. INI
 
 # Функции
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
 - MultiLib
 
 I. basic
@@ -63,6 +72,9 @@ II. czipC
 
 III. ping
 1. InternetConection()
+
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
 
 IV. FTP
 1. upload(string host, string username, string password, string remoteDir, string filename, string localfullpath)
@@ -94,6 +106,9 @@ X. Authenticator
 XI. INI
 1. get(string pathToFile, string Section, string variable)
 2. set(string pathToFile, string Section, string variable, string newTextForVariable, bool returnMSGError)
+
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
 
 - MultiLibGUI
 
@@ -120,6 +135,9 @@ IV. FTP
 V. mail
 1. send(string fromEmail, string fromName, string toEmail, string subject, string textOrHtml, string smtpServer, int smtpPort, string smtpMail, string smtpPasswordMail, bool saveLogFails)
 
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
+
 VI. music
 1. play(string pathMusicFile)
 2. stop()
@@ -143,8 +161,14 @@ XI. INI
 1. get(string pathToFile, string Section, string variable)
 2. set(string pathToFile, string Section, string variable, string newTextForVariable, bool returnMSGError)
 
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
+
 # Документация
 В документации содержится: библиотека.класс.функция(аргументы) - описание
+
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
 
 ``` bash
 \
@@ -162,7 +186,11 @@ XI. INI
 
 - MultiLib.basic.random(int start, int finish) - Генерация рандомного числа. Первый параметр означает от какого числа начать генерацию, второй параметр означает ДО какого числа закончить генирацию. Например: 1 аргумент-111111 2 аргумент-999999 Итог: 874674. Возвращает: Рандомное сгенирированное число
 
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
+
 - MultiLib.basic.read(*string expectedText) - Активация пользовательского ввода данных. 1 аргумент являетсвя дополнительным и его можно не указывать. Он отвевает за проверку текста. Например: без аргумента, пользователь ввёл: 918 Итог: 918; 1 аргумент-918, пользователь ввёл 918 Итог: true; 1 аргумент-918, пользователь ввёл: 387, Итог: false. Возвращает: Без аргументов - Введённую строку пользователем; true - при наличии 1 аргумента, если пользователь ввёл текст который указан в аргументе; false - при наличии 1 аргумента, если строка пользователя не равна строке в аргументе.
+
 
 - MultiLib.basic.pause() - Приостанавливает консоль до нажатия любого клавиша. Возвращает: Ничего
 
@@ -175,6 +203,9 @@ XI. INI
 - MultiLib.basic.write(string text) - Выводит текст. В аргументе укажите текст для вывода. Возвращает: Ничего
 
 - MultiLib.basic.versionProgram(string namePacket, string description, string Version, string Revese, string copyright, string company, string trademark) - Выводит текст "О программе...". namePacket - Имя программы; description - Описание программы; Version - Версия программы; Revese - Ревизия программы (RELEASE, BETA, ALPHA); copyright - копирайт ((C) Aboio - 3022); company - компания; trademark - торговая марка
+
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
 
 - MultiLib.czipC.EncryptFile(string inputFile, string outputFile, string password) - Криптование файла/архива. inputFile - Входной файл или архив который будет закриптован (если файл или архив находится не рядом с программой, то укажите полный путь до файла); outputFile - Выходной файл или архив зашифрованный; password - Пароль на расшифровку. Возвращает: return - None, file - cryptedFile
 
@@ -190,6 +221,9 @@ XI. INI
 
 - MultiLib.FTP.upload(string host, string username, string password, string localfullpath) - Загружает файл на фтп-сервер. host - полный путь на удалённом сервере куда будет загружен файл с указанием имя файла и расшерения для сохранение его под этими данными (например: https://ftp.multipl.com/UI/MultiIIcon.ico); username - логин/имя пользователя для входа на сервер; password - пароль для этого пользователя; localfullpath - полный путь до файла для загрузки его на сервер (например: C:\users\userName\desktop\miIcon.ico)
 
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
+
 - MultiLib.FTP.download(string host, string username, string password, string localPath) - Скачивает файл с фтп-сервера. host - полный путь до файла на удалённом сервере откуда будет скачан файл (например: https://ftp.multipl.com/UI/MultiBrowser.ico); username - логин/имя пользователя для входа на сервер; password - пароль для этого пользователя; localPath - полный путь куда и под каким именем будет сохранён файл (например: C:\users\userName\source\repos\MultiBrowser\index.ico)
 
 - MultiLib.FTP.exists(string host, string username, string password) - Проверяет наличие файла на фтп-сервере. host - полный путь до файла на удалённом сервере для проверки его наличия (например: https://ftp.multipl.com/UI/MultiBrowser.ico); username - логин/имя пользователя для входа на сервер; password - пароль для этого пользователя
@@ -204,6 +238,9 @@ XI. INI
 
 - MultiLib.compilator.collect(string inputSourceFile, string outputCompileFile) - Сборка файла C# в программу. inputSourceFile - полный путь до файла в котором хранится исходный код на C#; outputCompileFile - Выходной файл после сборки (Например: AsmCompileC#.exe) (можно также указать полный путь). Возвращает: return - None, file - compiled file
 
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
+
 - MultiLib.mget.get(string url, string pathTo) - Получение репозитория. url - Ссылка на репозиторий (Например: https://github.com/dmitriykotik/MultiLib.git); pathTo - Полный путь куда расспаковать репозиторий (Например: C:\users\test\goha) (Папка должна быть создана и быть пустой)
 
 - MultiLib.pass.GenPassword(int length) - Генерация случайного пароля. length - длина пароля.
@@ -217,6 +254,9 @@ XI. INI
 - MultiLib.INI.get(string pathToFile, string Section, string variable) - Получение текста из определённой переменной в секции файла. pathToFile - Полный путь до файла; Section - Секция; variable - Переменная; Возвращает: Код ошибки или текст из переменной (Вывод: 0x11 = Файл не существует; 0x21 = Указанная секция не существует; 0x31 = Указанная переменная не существует; (другое (текст)) = Вывод текст из переменной)
 
 - MultiLib.INI.set(string pathToFile, string Section, string variable, string newTextForVariable, bool returnMSGError) - Установка значения в определённую переменную в секиции файла; pathToFile - Полный путь до файла; Section - Секция; variable - Переменная; newTextForVariable - Новый текст на переменную; returnMSGError - Показать сообщение об ошибке если она будет?
+
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
 
 ``` bash
 \
@@ -248,6 +288,9 @@ XI. INI
 
 - MultiLibGUI.czipC.decompress(string pathArchive, string outputFolder) - Распаковывает архив. pathArchive - полный путь до архива (можно не указывать полный путь, если архив будет находится рядом с программой); outputFolder - полный путь до папки в которую будет расшифрован архив.
 
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
+
 - MultiLibGUI.internet.TestConnection() - Проверяет наличие интернета. Возвращает: true - если интернет есть, false - если интернета нет
 
 - MultiLibGUI.internet.ping(string url) - Проверяет соединение с сайтом. Возвращает: true - если соединение установлено, false - если соединение не удалось установить
@@ -266,6 +309,9 @@ XI. INI
 
 - MultiLibGUI.music.pause() - Приостановка песни
 
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
+
 - MultiLibGUI.compilator.collect(string inputSourceFile, string outputCompileFile) - Сборка файла C# в программу. inputSourceFile - полный путь до файла в котором хранится исходный код на C#; outputCompileFile - Выходной файл после сборки (Например: AsmCompileC#.exe) (можно также указать полный путь). Возвращает: return - None, file - compiled file
 
 - MultiLibGUI.mget.get(string url, string pathTo) - Получение репозитория. url - Ссылка на репозиторий (Например: https://github.com/dmitriykotik/MultiLib.git); pathTo - Полный путь куда расспаковать репозиторий (Например: C:\users\test\goha) (Папка должна быть создана и быть пустой)
@@ -281,3 +327,6 @@ XI. INI
 - MultiLib.INI.get(string pathToFile, string Section, string variable) - Получение текста из определённой переменной в секции файла. pathToFile - Полный путь до файла; Section - Секция; variable - Переменная; Возвращает: Код ошибки или текст из переменной (Вывод: 0x11 = Файл не существует; 0x21 = Указанная секция не существует; 0x31 = Указанная переменная не существует; (другое (текст)) = Вывод текст из переменной)
 
 - MultiLib.INI.set(string pathToFile, string Section, string variable, string newTextForVariable, bool returnMSGError) - Установка значения в определённую переменную в секиции файла; pathToFile - Полный путь до файла; Section - Секция; variable - Переменная; newTextForVariable - Новый текст на переменную; returnMSGError - Показать сообщение об ошибке если она будет?
+
+> [!WARNING]
+> Данный проект находится в архиве. Данный проект был переделан в "[MultiAPI](https://github.com/dmitriykotik/MultiAPI)".
